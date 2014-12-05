@@ -7,6 +7,7 @@
 
     function getRecent(){
       Note.recent().then(function(response){
+        console.log(response);
         $scope.notes = response.data.notes;
       });
     }
