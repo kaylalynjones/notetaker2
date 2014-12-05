@@ -1,18 +1,17 @@
 (function(){
   'use strict';
 
-  angular.module('hapi-auth')
+  angular.module('notetakr')
   .factory('Note', ['$http', function($http){
 
     function create(note){
       return $http.post('/notes', note);
     }
 
-    function noteIndex(query){
-      return $http.get('/notes?limit=' + query.limit);
+    function recent(){
+      return $http.get('/notes?limit=10&offset=0');
     }
 
-
-    return {create:create, noteIndex: noteIndex};
+    return {create:create, recent:recent};
   }]);
 })();

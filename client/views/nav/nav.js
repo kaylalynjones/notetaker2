@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('hapi-auth')
+  angular.module('notetakr')
     .controller('NavCtrl', ['$rootScope', '$scope', '$state', 'User', function($rootScope, $scope, $state, User){
       $scope.logout = function(){
         User.logout().then(function(){
