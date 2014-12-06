@@ -9,16 +9,13 @@ module.exports = {
   tags:['notes'],
   validate: {
     query: {
-      limit: Joi.number().required()
+      limit: Joi.number(),
+      offset: Joi.number()
     }
   },
   handler: function(request, reply){
     Note.all(request.auth.credentials, request.query, function(err, notes){
-      if(!err){
-        reply(notes.rows[0].display_note);
-      }else{
-        reply({error: 'No notes were found. Try making some!'});
-      }
+        reply({notes:notes, err:err}).code(err ? 400 : 200);
     });
   }
 };

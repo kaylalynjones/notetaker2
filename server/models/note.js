@@ -7,14 +7,15 @@ function Note(){
 
 Note.create = function(user, obj, cb){
   pg.query('select add_note($1, $2, $3, $4)', [user.id, obj.title, obj.body, obj.tags], function(err, results){
-    console.log(err, results);
     cb();
   });
 };
 
 Note.all = function(user, query, cb){
-  console.log('display_note('+ user.id + ',' + query.limit +')');
-  pg.query('select display_note('+ user.id + ',' + query.limit +')', [], cb);
+  //console.log('query_notes('+ user.id + ',' + query.lmt + ',' + query.ofset +')');
+  pg.query('select * from query_notes('+ user.id + ',' + query.limit +',' + query.offset +')', [], function(err, results){
+    cb(err, results.rows);
+  });
 };
 
 module.exports = Note;
