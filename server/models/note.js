@@ -12,7 +12,6 @@ Note.create = function(user, obj, cb){
 };
 
 Note.all = function(user, query, cb){
-  //console.log('query_notes('+ user.id + ',' + query.lmt + ',' + query.ofset +')');
   pg.query('select * from query_notes('+ user.id + ',' + query.limit +',' + query.offset +')', [], function(err, results){
     cb(err, results.rows);
   });

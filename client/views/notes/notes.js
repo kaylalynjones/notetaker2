@@ -17,7 +17,8 @@
 
     $scope.create = function(note){
       Note.create(note).then(function(response){
-        $scope.notes.push(response.data.notes.rows);
+        console.log('Just added >>>>', response.config.data);
+        $scope.notes.push(response.config.data);
         $scope.note = {};
         getRecent();
       });
