@@ -1,20 +1,25 @@
-create or replace function add_note (user_id integer, title varchar, body text, tags varchar)
+create or replace function add_note (user_id integer, title varchar, body text, tags varchar, photos varchar)
 returns integer AS $$
 declare
 
   nid integer;
   tid integer;
   names varchar[];
+  urls varchar[];
   tagname varchar;
+  url varchar;
 
 begin
 
   -- insert the note
   insert into notes (title, body, user_id) values (title, body, user_id) returning id into nid;
+
+  -- TAGS
   -- turn string into array
   select string_to_array(tags, ',') into names;
   raise notice 'nid: %', nid;
   raise notice 'names: %', names;
+
   -- create temp table
   create temp table tagger on commit drop as select nid, t.id as tid, t.name as tname from tags t where t.name = any(names);
 
@@ -33,6 +38,17 @@ begin
 
   -- take the temp table and insert it into the join table
   insert into notes_tags select t.nid, t.tid from tagger t;
+
+  -- PHOTOS
+  -- turn photo string into array
+  select string_to_array(photos, ',') into urls;
+
+  -- looping over all the photos
+  foreach url in array urls
+  loop
+    insert into photos (note_id, url) values (nid, url);
+  end loop;
+
   -- return the note id
   return nid;
 

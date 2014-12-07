@@ -14,7 +14,6 @@
 
     function success(data, status, headers, config){
       // file is uploaded successfully
-      console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
     }
 
     function error(err){
@@ -23,7 +22,6 @@
 
     function getRecent(){
       Note.recent().then(function(response){
-        console.log('RECENT >>>>', response.data.notes);
         $scope.notes = response.data.notes;
       });
     }
@@ -31,9 +29,8 @@
     getRecent();
 
     $scope.create = function(note){
-      note.photos = $scope.imageUploads;
+      note.photos = $scope.imageUploads.join(',');
       Note.create(note).then(function(response){
-        console.log('Just added >>>>', response.config.data);
         $scope.notes.push(response.config.data);
         $scope.note = {};
         getRecent();
@@ -45,8 +42,8 @@
       $http.get('/s3policy').success(function(response){
         for (var i = 0; i < $files.length; i++) {
           $scope.uploadProgress = 0;
-          var file = $files[i];
-          var filename = window.uuid(16) + '.' + file.name.split('.').pop();
+          var file = $files[i],
+              filename = window.uuid(16) + '.' + file.name.split('.').pop();
           $scope.imageUploads.push(filename);
           $upload.upload({
             url: 'https://s3.amazonaws.com/kjones-notetakr', //S3 upload url including bucket name,
