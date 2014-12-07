@@ -10,7 +10,7 @@
     "url": "https://github.com/nss-cohort-2014-06-07/hapi-technologies"
   },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "./start",
     "postinstall": "grunt deploy"
   },
   "author": "Chyld Medford <chyld.medford@gmail.com>",

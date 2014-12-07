@@ -1,8 +1,6 @@
-h1 NOTES
-
 .row
-  .small-8.columns
-    h3 VIEW
+  .small-6.columns
+    h3 Recent Notes
     table#notes
       thead
         tr
@@ -14,9 +12,15 @@ h1 NOTES
               td
                 span.tag(ng-repeat='name in note.tag_names')
                   a(href='/notes?tag={{name}}') {{name}}
-  .small-4.columns
-    h3 CREATE
-    input(type='text', ng-model='note.title', placeholder='Title')
-    textarea(ng-model='note.body')
-    input(type='text', ng-model='note.tags', placeholder='tag1,tag2,tag3')
-    button.radius.success(ng-click='create(note)') Create
+  .small-6.columns
+    h3 Add a Note
+    form
+      input(type='text', ng-model='note.title', placeholder='Title')
+      textarea(ng-model='note.body', cols=30, row=5)
+      input(type='text', ng-model='note.tags', placeholder='tag1,tag2,tag3')
+      div#upload-photo
+      .form-group
+        label(for="photos") Add Photos
+        input.btn#photos(type="file", ng-file-select="onFileSelect($files)", multiple)
+        progress(value={{uploadProgress}}', max=100)
+      button.radius.success(ng-click='create(note)') Create

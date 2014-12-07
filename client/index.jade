@@ -5,7 +5,7 @@ html.no-js(ng-app='notetakr', lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title NoteTaker
+    title Evernode
     link(rel='stylesheet', href='/vendor/foundation/css/normalize.css')
     link(rel='stylesheet', href='/vendor/foundation/css/foundation.css')
     link(rel='stylesheet', href='/vendor/fontawesome/css/font-awesome.css')
@@ -21,16 +21,20 @@ html.no-js(ng-app='notetakr', lang='en')
 
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/vendor/foundation/js/foundation.min.js')
+    script(src='/vendor/underscore/underscore.js')
+    script(src='/vendor/uuid.js')
+      
     script(src='/vendor/angular/angular.js')
     script(src='/vendor/angular-ui-router/release/angular-ui-router.js')
-    script(src='/vendor/underscore/underscore.js')
+    script(src='/vendor/ng-file-upload-shim/angular-file-upload-shim.min.js')  //for non-html5 browsers support
+    script(src='/vendor/ng-file-upload/angular-file-upload.min.js') 
+
 
     script(src='/index.js')
     script(src='/models/user.js')
     script(src='/models/note.js')
     script(src='/views/users/users.js')
     script(src='/views/notes/notes.js')
-    script(src='/views/notes/notes-home.js')
     script(src='/views/nav/nav.js')
 
     script.

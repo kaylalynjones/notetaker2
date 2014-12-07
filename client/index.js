@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('notetakr', ['ui.router'])
+  angular.module('notetakr', ['ui.router', 'angularFileUpload'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/');
 

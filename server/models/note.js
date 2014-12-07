@@ -6,7 +6,8 @@ function Note(){
 }
 
 Note.create = function(user, obj, cb){
-  pg.query('select add_note($1, $2, $3, $4)', [user.id, obj.title, obj.body, obj.tags], function(err, results){
+  console.log(obj.tags);
+  pg.query('select add_note($1, $2, $3, $4, $5)', [user.id, obj.title, obj.body, obj.tags, obj.photos], function(err, results){
     cb();
   });
 };

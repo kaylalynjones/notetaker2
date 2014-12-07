@@ -10,7 +10,8 @@ module.exports = {
     payload: {
       title: Joi.string().required(),
       body: Joi.string().required(),
-      tags: Joi.string().required()
+      tags: Joi.string().required(),
+      photos: Joi.string()
     }
   },
   handler: function(request, reply){
