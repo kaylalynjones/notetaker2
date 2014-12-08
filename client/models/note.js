@@ -12,6 +12,10 @@
       return $http.get('/notes?limit=10&offset=0');
     }
 
-    return {create:create, recent:recent};
+    function show(id){
+      return $http.get('/notes/show?note_id=' + id);
+    }
+
+    return {create:create, recent:recent, show:show};
   }]);
 })();

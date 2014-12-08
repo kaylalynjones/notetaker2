@@ -1,3 +1,4 @@
+/* jshint camelcase:false */
 'use strict';
 
 var pg = require('../postgres/manager');
@@ -13,9 +14,18 @@ Note.create = function(user, obj, cb){
 };
 
 Note.all = function(user, query, cb){
-  pg.query('select * from query_notes('+ user.id + ',' + query.limit +',' + query.offset +')', [], function(err, results){
+  pg.query('select * from query_notes($1, $2, $3)', [user.id, query.limit, query.offset], function(err, results){
     cb(err, results.rows);
   });
+};
+
+Note.show = function(query, cb){
+  pg.query('select * from get_note($1)', [query.note_id], function(err, results){
+    console.log('show ERROR', err);
+    console.log('show results', results);
+    cb(err, results.rows);
+  });
+
 };
 
 module.exports = Note;
