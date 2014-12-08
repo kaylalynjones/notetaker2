@@ -10,10 +10,10 @@
     "url": "https://github.com/nss-cohort-2014-06-07/hapi-technologies"
   },
   "scripts": {
-    "start": "./start",
+    "start": "node server/index.js",
     "postinstall": "grunt deploy"
   },
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Kayla Jones",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.0.28",
