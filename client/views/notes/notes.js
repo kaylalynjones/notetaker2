@@ -17,13 +17,12 @@
     }
 
     function error(err){
-      console.log(err);
+      //console.log(err);
     }
 
     function getRecent(){
       Note.recent().then(function(response){
         $scope.notes = response.data.notes;
-        console.log($scope.notes);
       });
     }
 
