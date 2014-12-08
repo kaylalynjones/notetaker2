@@ -13,9 +13,7 @@ module.exports = {
     }
   },
   handler: function(request, reply){
-    console.log('HAI!!!! request.query=' + request.query);
     Note.show(request.query, function(err, note){
-      console.log('ERROR', err);
       reply({note:note, err:err}).code(err ? 400 : 200);
     });
   }

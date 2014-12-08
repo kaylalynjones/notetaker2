@@ -21,8 +21,6 @@ Note.all = function(user, query, cb){
 
 Note.show = function(query, cb){
   pg.query('select * from get_note($1)', [query.note_id], function(err, results){
-    console.log('show ERROR', err);
-    console.log('show results', results);
     cb(err, results.rows);
   });
 
