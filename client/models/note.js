@@ -1,3 +1,4 @@
+/* jshint loopfunc:true, camelcase:false */
 (function(){
   'use strict';
 
@@ -17,9 +18,13 @@
     }
 
     function relevantNotes(name){
-      return $http.get('/notes?tag='+name);
+      return $http.get('/notes?tag=' + name);
     }
 
-    return {create:create, recent:recent, show:show, relevantNotes:relevantNotes};
+    function remove(note){
+      return $http.delete('/notes/' + note.note_id);
+    }
+
+    return {create:create, recent:recent, show:show, relevantNotes:relevantNotes, remove:remove};
   }]);
 })();

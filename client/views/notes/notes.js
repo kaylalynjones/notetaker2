@@ -8,6 +8,13 @@
     $scope.imageUploads = [];
     $scope.uploadProgress = 0;
 
+    $scope.removeNote = function(note){
+      Note.remove(note).then(function(response){
+        console.log('frontend res>', response);
+        $state.reload();
+      });
+    };
+
     $rootScope.$on('$locationChangeSuccess', function(event){
       getRecentOrByTag();
     });
@@ -17,18 +24,6 @@
       Note.relevantNotes(params.tag).success(function(response){
         $scope.notes = response.notes;
       });
-    }
-
-    function progress(evt){
-      $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
-    }
-
-    function success(data, status, headers, config){
-      // file is uploaded successfully
-    }
-
-    function error(err){
-      //console.log(err);
     }
 
     function getRecent(){
@@ -56,6 +51,14 @@
       });
     };
 
+    function progress(evt){
+      $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+    }
+
+    function error(err){
+      //console.log(err);
+    }
+
     $scope.onFileSelect = function($files){
       $scope.imageUploads = [];
       $http.get('/s3policy').success(function(response){
@@ -77,7 +80,7 @@
               filename: file.name // this is needed for Flash polyfill IE8-9
             },
             file: file
-          }).progress(progress).success(success).error(error);
+          }).progress(progress).error(error);
         }
       });
     };

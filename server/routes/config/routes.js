@@ -9,6 +9,8 @@ module.exports = [
   {method: 'post',   path: '/notes',          config: require('../definitions/notes/create')},
   {method: 'get',    path: '/notes',          config: require('../definitions/notes/get_user_notes')},
   {method: 'get',    path: '/s3policy',       config: require('../definitions/notes/s3_policy')},
-  {method: 'get',    path: '/notes/show',     config: require('../definitions/notes/show_note')}
+  {method: 'get',    path: '/notes/show',     config: require('../definitions/notes/show_note')},
+  {method: 'delete', path: '/notes/{noteId}', config: require('../definitions/notes/delete_note')}
+
 
 ];

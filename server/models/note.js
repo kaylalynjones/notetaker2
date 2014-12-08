@@ -23,7 +23,13 @@ Note.show = function(query, cb){
     var note = results.rows[0];
     cb(err, note);
   });
+};
 
+Note.remove = function(user, noteId, cb){
+  pg.query('select delete_note($1, $2)', [user.id, noteId], function(err, results){
+    console.log('bkend ctrl says: >>>>>>>>', results);
+    cb(err, results);
+  });
 };
 
 module.exports = Note;
