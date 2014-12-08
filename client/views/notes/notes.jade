@@ -11,7 +11,7 @@
               td: a(href='#/notes/show/{{note.note_id}}') {{note.title}}
               td
                 span.tag(ng-repeat='name in note.tag_names')
-                  a(href='/notes?tag={{name}}') {{name}}
+                  a(href='#/notes?tag={{name}}') {{name}}
   .small-6.columns
     h3 Add a Note
     form

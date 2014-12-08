@@ -10,7 +10,8 @@ module.exports = {
   validate: {
     query: {
       limit: Joi.number(),
-      offset: Joi.number()
+      offset: Joi.number(),
+      tag: Joi.string()
     }
   },
   handler: function(request, reply){

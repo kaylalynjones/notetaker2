@@ -1,6 +1,20 @@
 .row
-  .col-xs-12
-    h1 title
-    h4 body
-    h5 tags
-    div images here
+  .col-xs-2
+  .col-xs-8
+    .row
+      .col-xs-6
+        h1 {{note.title}}
+      .col-xs-6
+        h3 {{note.updated_at | date}}
+    .row
+      .col-xs-12
+        p {{note.body}}
+    .row
+      .col-xs-12
+        .tags(ng-repeat='tag in note.tag_names') 
+          p {{tag}}
+    .row
+      .col-xs-12
+        .photos(ng-repeat='photo in note.photos')
+          img(ng-src='https://s3.amazonaws.com/kjones-notetakr/{{photo}}')
+  .col-xs-2

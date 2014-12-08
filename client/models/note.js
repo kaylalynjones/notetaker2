@@ -16,6 +16,10 @@
       return $http.get('/notes/show?note_id=' + id);
     }
 
-    return {create:create, recent:recent, show:show};
+    function relevantNotes(name){
+      return $http.get('/notes?tag='+name);
+    }
+
+    return {create:create, recent:recent, show:show, relevantNotes:relevantNotes};
   }]);
 })();

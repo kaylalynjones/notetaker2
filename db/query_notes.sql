@@ -1,4 +1,4 @@
-create or replace function query_notes (uid integer, lmt integer, ofst integer)
+create or replace function query_notes (uid integer, lmt integer, ofst integer, tag_name varchar)
 returns table (note_id integer, title varchar, body text, updated_at timestamp, tag_ids integer[], tag_names varchar[]) AS $$
 declare
 begin
@@ -9,6 +9,7 @@ begin
     inner join notes n on n.id = nt.note_id
     inner join tags t on t.id = nt.tag_id
     where n.user_id = uid
+      and (tag_name is null or t.name = tag_name)
     group by n.id
     order by updated_at desc
     offset ofst

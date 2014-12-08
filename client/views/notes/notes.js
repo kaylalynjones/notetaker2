@@ -8,6 +8,17 @@
     $scope.imageUploads = [];
     $scope.uploadProgress = 0;
 
+    $rootScope.$on('$locationChangeSuccess', function(event){
+      getRecentOrByTag();
+    });
+
+    function filterByTag(){
+      var params = $location.search();
+      Note.relevantNotes(params.tag).success(function(response){
+        $scope.notes = response.notes;
+      });
+    }
+
     function progress(evt){
       $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
     }
@@ -26,7 +37,15 @@
       });
     }
 
-    getRecent();
+    function getRecentOrByTag(){
+      if ($location.search().tag){
+        filterByTag();
+      } else {
+        getRecent();
+      }
+    }
+
+    getRecentOrByTag();
 
     $scope.create = function(note){
       note.photos = $scope.imageUploads.join(',');
