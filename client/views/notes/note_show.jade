@@ -1,20 +1,18 @@
 .row
-  .col-xs-2
-  .col-xs-8
+  .small-12.columns.note
     .row
-      .col-xs-6
+      .small-9.columns
         h1 {{note.title}}
-      .col-xs-6
+      .small-3.columns
         h3 {{note.updated_at | date}}
     .row
-      .col-xs-12
+      .small-6.columns
         p {{note.body}}
     .row
-      .col-xs-12
+      .small-12.columns
         .tags(ng-repeat='tag in note.tag_names') 
           p {{tag}}
     .row
-      .col-xs-12
+      .small-12.columns
         .photos(ng-repeat='photo in note.photos')
           img(ng-src='https://s3.amazonaws.com/kjones-notetakr/{{photo}}')
-  .col-xs-2

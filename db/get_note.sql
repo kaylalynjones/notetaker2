@@ -12,7 +12,7 @@ create or replace function get_note (nid integer)
         from photos ph
         group by ph.note_id
       ) p on p.note_id = n.id
-      where n.id = 13
+      where n.id = nid
       group by n.id, p.photos;
 
   end;
