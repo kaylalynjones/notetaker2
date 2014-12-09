@@ -19,7 +19,7 @@ Note.all = function(user, query, cb){
 };
 
 Note.show = function(query, cb){
-  pg.query('select * from get_note($1)', [query.note_id], function(err, results){
+  pg.query('select * from get_note($1)', [query.noteId], function(err, results){
     var note = results.rows[0];
     cb(err, note);
   });
@@ -27,7 +27,6 @@ Note.show = function(query, cb){
 
 Note.remove = function(user, noteId, cb){
   pg.query('select delete_note($1, $2)', [user.id, noteId], function(err, results){
-    console.log('bkend ctrl says: >>>>>>>>', results);
     cb(err, results);
   });
 };

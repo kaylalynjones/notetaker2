@@ -1,0 +1,15 @@
+.row
+  .small-2.columns
+  .small-8.columns
+    h3 Add a Note
+    form
+      input(type='text', ng-model='note.title', placeholder='Title')
+      textarea(ng-model='note.body', placeholder='Let\'s remember...')
+      input(type='text', ng-model='note.tags', placeholder='tag1,tag2,tag3')
+      div#upload-photo
+        .form-group
+          label(for="photos") Add Photos
+          input.btn#photos(type="file", ng-file-select="onFileSelect($files)", multiple)
+        progress(value='{{uploadProgress}}', max=100)
+      button.radius.success(ng-click='create(note)') Create
+  .small-2.columns                

@@ -2,15 +2,15 @@
   'use strict';
 
   angular.module('notetakr')
-  .controller('NotesCtrl', ['$rootScope', '$scope', '$state', 'Note', '$location', '$upload', '$http', function($rootScope, $scope, $state, Note, $location, $upload, $http){
+  .controller('NotesCtrl', ['$rootScope', '$scope', '$state', 'Note', '$location', '$upload', '$http', '$stateParams', function($rootScope, $scope, $state, Note, $location, $upload, $http, $stateParams){
     $scope.note = {};
     $scope.notes = [];
     $scope.imageUploads = [];
     $scope.uploadProgress = 0;
+    $scope.note = [];
 
     $scope.removeNote = function(note){
       Note.remove(note).then(function(response){
-        console.log('frontend res>', response);
         $state.reload();
       });
     };

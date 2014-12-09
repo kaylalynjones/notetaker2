@@ -9,8 +9,12 @@
         .state('home',     {url:'/',         templateUrl:'/views/home/home.html'})
         .state('register', {url:'/register', templateUrl:'/views/users/users.html', controller:'UsersCtrl'})
         .state('login',    {url:'/login',    templateUrl:'/views/users/users.html', controller:'UsersCtrl'})
-        .state('notes',    {url:'/notes',    templateUrl:'/views/notes/notes.html', controller:'NotesCtrl'})
-        .state('note_show', {url:'/notes/show/{id}', templateUrl:'/views/notes/note_show.html', controller: 'NoteShowCtrl'});
+        // .state('notes',    {url:'/notes',    templateUrl:'/views/notes/notes.html', controller:'NotesCtrl'})
+        // .state('note_show', {url:'/notes/show/{id}', templateUrl:'/views/notes/note_show.html', controller: 'NotesCtrl'});
+        .state('notes',        {url:'/notes',    templateUrl:'/views/notes/notes.html',        abstract:true})
+        .state('notes.new',    {url:'',          templateUrl:'/views/notes/notes_new.html',    controller:'NotesCtrl'})
+        .state('notes.list',   {url:'?tag&page', templateUrl:'/views/notes/notes_list.html',   controller:'NotesCtrl'})
+        .state('notes.show',   {url:'/{noteId}', templateUrl:'/views/notes/notes_show.html',   controller:'NoteShowCtrl'});
       }])
     .run(['$rootScope', '$http', function($rootScope, $http){
       $http.get('/status').then(function(response){

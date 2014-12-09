@@ -11,7 +11,7 @@ module.exports = {
       title: Joi.string().required(),
       body: Joi.string().required(),
       tags: Joi.string().required(),
-      photos: Joi.string()
+      photos: Joi.string().optional()
     }
   },
   handler: function(request, reply){

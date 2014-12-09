@@ -1,0 +1,18 @@
+.row
+  .small-2.columns
+  .small-8.columns
+    h3 Recent Notes
+    table#notes
+      thead
+        tr
+          th 
+          th Title
+          th Tags
+          tbody
+            tr(ng-repeat='note in notes')
+              td: a(ng-click='removeNote(note)'): i.fa.fa-trash
+                td: a(ui-sref='notes.show({noteId:note.note_id})') {{note.title}}
+                td
+                  span.tag(ng-repeat='name in note.tag_names')
+                    a(href='#/notes?tag={{name}}') {{name}}
+  .small-2.columns

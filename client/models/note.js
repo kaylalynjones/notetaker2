@@ -13,8 +13,8 @@
       return $http.get('/notes?limit=10&offset=0');
     }
 
-    function show(id){
-      return $http.get('/notes/show?note_id=' + id);
+    function show(noteId){
+      return $http.get('/notes/'+ noteId);
     }
 
     function relevantNotes(name){
