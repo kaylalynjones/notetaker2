@@ -31,4 +31,10 @@ Note.remove = function(user, noteId, cb){
   });
 };
 
+Note.count = function(user, cb){
+  pg.query('select count(*) from notes where user_id = $1', [user.id], function(err, results){
+    cb(err, results && results.rows ? results.rows[0].count : null);
+  });
+};
+
 module.exports = Note;
