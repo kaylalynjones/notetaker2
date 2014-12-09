@@ -7,7 +7,7 @@
     $scope.notes = [];
     $scope.imageUploads = [];
     $scope.uploadProgress = 0;
-    $scope.note = [];
+    $scope.note = {};
 
     $scope.removeNote = function(note){
       Note.remove(note).then(function(response){

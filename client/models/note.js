@@ -6,6 +6,7 @@
   .factory('Note', ['$http', function($http){
 
     function create(note){
+      debugger;
       return $http.post('/notes', note);
     }
 
