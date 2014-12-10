@@ -38,7 +38,7 @@ User.register = function(obj, cb){
       function randomUrl(url, cb){
         var ext  = path.extname(url);
 
-        crypto.randomBytes(48, function(ex, buf){
+        crypto.randomBytes(16, function(ex, buf){
           var token  = buf.toString('hex'),
           file   = token + '.avatar' + ext,
           avatar = 'https://s3.amazonaws.com/' + process.env.AWS_BUCKET + '/' + encodeURIComponent(file);
