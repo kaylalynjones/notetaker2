@@ -3,9 +3,7 @@
 
 var pg = require('../postgres/manager'),
     AWS    = require('aws-sdk'),
-    crypto = require('crypto'),
-    path   = require('path'),
-    concat = require('concat-stream');
+    crypto = require('crypto');
 
 function Note(){
 }

@@ -15,7 +15,7 @@ module.exports = {
     b64: Joi.string().required()
   },
   handler: function(request, reply){
-    Note.phoneUpload(request.auth.credentials, request.b64, request.params.noteId, function(err){
+    Note.phoneUpload(request.auth.credentials, request.payload.b64, request.params.noteId, function(err){
       reply().code(err ? 400 : 200);
     });
   }
