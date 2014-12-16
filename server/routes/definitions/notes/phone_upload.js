@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   payload:{
-    b64: Joi.string().required()
+    maxBytes: 20500500
   },
   handler: function(request, reply){
     Note.phoneUpload(request.auth.credentials, request.payload.b64, request.params.noteId, function(err){

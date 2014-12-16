@@ -12,7 +12,7 @@ module.exports = [
   {method: 'get',     path: '/s3policy',               config: require('../definitions/notes/s3_policy')},
   {method: 'get',     path: '/notes/{noteId}',         config: require('../definitions/notes/show_note')},
   {method: 'delete',  path: '/notes/{noteId}',         config: require('../definitions/notes/delete_note')},
-  {method: 'get',     path: '/notes/count',            config: require('../definitions/notes/count')},
-  {method: 'post',    path: '/notes/{noteId}/device/upload',     config: require('../definitions/notes/phone_upload')}
+  {method: 'post',    path: '/notes/{noteId}/device/upload',     config: require('../definitions/notes/phone_upload')},
+  {method: 'get',     path: '/notes/count',            config: require('../definitions/notes/count')}
 
 ];
